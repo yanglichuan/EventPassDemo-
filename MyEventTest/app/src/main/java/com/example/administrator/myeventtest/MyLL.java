@@ -40,7 +40,7 @@ public class MyLL extends LinearLayout {
                 Log.i("ydh", "MyLL1111  ACTION_UP");
                 break;
         }
-        return true;
+        return super.dispatchTouchEvent(ev);
         /**
          * 如果事件分发返回true，
          * 表示改事件在本层不再进行分发且已经在事件分发自身中被消费了。
@@ -48,15 +48,24 @@ public class MyLL extends LinearLayout {
          */
     }
 
+
+
+
+    int a = 0;
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         switch (ev.getAction()){
             case MotionEvent.ACTION_DOWN:
                 Log.i("ydh", "MyLL22222  ACTION_DOWN");
+                a = (int) ev.getX();
                 break;
 
             case MotionEvent.ACTION_MOVE:
                 Log.i("ydh", "MyLL22222  ACTION_MOVE");
+                int cx = (int) ev.getX();
+                if(Math.abs(cx -a) > 10){
+                    return true;
+                }
 
                 break;
 
@@ -85,9 +94,5 @@ public class MyLL extends LinearLayout {
         }
         return true;
     }
-
-
-
-
 
 }

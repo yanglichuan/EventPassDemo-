@@ -57,7 +57,7 @@ public class MyTextV extends TextView {
                 Log.i("ydh", " MyTextV333 ACTION_UP");
                 break;
         }
-        return false;
+        return true;
     }
 }
 
